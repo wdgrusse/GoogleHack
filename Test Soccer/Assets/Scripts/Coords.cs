@@ -4,10 +4,10 @@ using System.Collections;
 public class Coords : MonoBehaviour
 {
     public Transform ball;
-    public GUIText x;
-    public GUIText y;
     public string xCod;
     public string yCod;
+    private float xVal;
+    private float yVal;
 
     private bool canGo = false;
 
@@ -27,7 +27,10 @@ public class Coords : MonoBehaviour
 
         if (GUI.Button(new Rect(20, 75, 80, 20), "Displace"))
         {
-            canGo = true;
+            if (float.TryParse(xCod, out xVal) && float.TryParse(yCod, out yVal))
+                canGo = true;
+            else
+                canGo = false;
         }
     }
 }
